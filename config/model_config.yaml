@@ -1,0 +1,93 @@
+labels:
+  horizon_days: [3, 5]
+  threshold_return:
+    3: 0.02
+    5: 0.03
+
+training:
+  min_train_rows: 250
+  test_size_ratio: 0.2
+  valid_size_ratio: 0.2
+  random_state: 42
+
+models:
+  logistic_regression:
+    enabled: true
+    params:
+      max_iter: 1000
+      class_weight: balanced
+  lightgbm:
+    enabled: true
+    params:
+      n_estimators: 300
+      learning_rate: 0.03
+      num_leaves: 31
+      subsample: 0.8
+      colsample_bytree: 0.8
+      random_state: 42
+  random_forest:
+    enabled: true
+    params:
+      n_estimators: 300
+      max_depth: 8
+      min_samples_leaf: 10
+      class_weight: balanced_subsample
+      random_state: 42
+
+ensemble:
+  enabled: true
+  weights:
+    logistic_regression: 0.2
+    lightgbm: 0.5
+    random_forest: 0.3
+
+model_selection:
+  mode: dynamic
+  train_weight: 0.35
+  backtest_weight: 0.65
+  min_model_weight: 0.10
+
+quality_gate:
+  enabled: true
+  min_train_auc: 0.55
+  min_train_precision: 0.28
+  min_backtest_auc: 0.57
+  min_backtest_precision: 0.50
+  min_backtest_avg_return: 0.00
+  downgrade_alerts_if_fail: true
+  max_alerts_when_degraded: 4
+
+regime_gate:
+  enabled: true
+  block_buy_in_downtrend: true
+  block_watchup_in_downtrend: true
+  block_sell_in_uptrend: false
+  confidence_penalty_sideway: 0.05
+  confidence_penalty_high_vol: 0.05
+
+alerts:
+  buy_threshold: 0.65
+  watch_up_threshold: 0.55
+  sell_threshold: 0.35
+  confidence_threshold: 0.52
+  min_signal_strength: 0.05
+  allow_neutral_alerts: false
+  top_n_each_side: 6
+  max_total_alerts: 14
+  adaptive_min_alerts: 4
+  fallback_top_n: 6
+  confidence_bands:
+    high: 0.75
+    medium: 0.60
+    low: 0.52
+
+reporting:
+  export_excel: true
+  export_csv: true
+  ranking_top_n: 12
+  feature_importance_top_n: 12
+
+backtest:
+  signal_threshold: 0.55
+  min_trades_per_window: 3
+  alert_top_n_list: [3, 5]

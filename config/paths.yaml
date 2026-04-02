@@ -1,0 +1,10 @@
+root: .
+raw_daily_dir: data/raw/daily
+raw_index_dir: data/raw/index
+processed_dir: data/processed
+features_dir: data/features
+artifacts_dir: data/artifacts
+db_path: data/artifacts/mach_lenh.db
+model_dir: data/artifacts/models
+log_dir: logs
+report_dir: reports

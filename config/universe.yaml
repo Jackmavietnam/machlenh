@@ -1,0 +1,28 @@
+project_name: "Mạch Lệnh"
+version: "1.0.0"
+universe:
+  - symbol: HPG
+    sector: Thep
+  - symbol: SSI
+    sector: ChungKhoan
+  - symbol: VND
+    sector: ChungKhoan
+  - symbol: TCB
+    sector: NganHang
+  - symbol: MBB
+    sector: NganHang
+  - symbol: FPT
+    sector: CongNghe
+  - symbol: ACB
+    sector: NganHang
+  - symbol: VHM
+    sector: BatDongSan
+  - symbol: VIC
+    sector: DaNganh
+  - symbol: HSG
+    sector: Thep
+  - symbol: NKG
+    sector: Thep
+  - symbol: MWG
+    sector: BanLe
+index_symbol: VNINDEX
